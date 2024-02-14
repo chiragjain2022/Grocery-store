@@ -1,0 +1,42 @@
+{% extends "base_form.html" %}
+
+{% block title %} Login {% endblock %}
+
+{% block styling %}
+{{ super() }}
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/form.css') }}">
+{% endblock %}
+
+{% block content %}
+
+<div class="login-form">
+  <h2>Login</h2>
+
+  <form action="/login" method="POST">
+    {{form.hidden_tag()}}
+    <div class="form-group">
+      <label for="email">Email ID</label>
+      <input type="email" id="email" class="form-control" placeholder="Enter your email address" name="email" required>
+    </div>
+    <div class="form-group">
+      <label for="password">Password</label>
+      <input type="password" id="password" class="form-control" placeholder="Enter your password" name="password"
+        required>
+    </div>
+    <button type="submit" class="login-btn">Login</button>
+    <p>Don't have an account? <a href="{{ url_for('user_signup') }}">Sign up</a></p>
+  </form>
+  {% with messages = get_flashed_messages() %}
+  {% if messages %}
+  {% for message in messages %}
+  <div class="alert alert-{{ category }} alter-dismissible fade show" role="alert">
+    {{message|safe}}
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>
+  <meta http-equiv="refresh" content="4">
+  {% endfor %}
+  {% endif %}
+  {% endwith %}
+</div>
+
+{% endblock %}

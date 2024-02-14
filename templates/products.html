@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+
+{% block title %} Products {% endblock %}
+
+{% block content %}
+
+
+<section class="products">
+    <div class="container">
+        <h2>{{category.name}}</h2>
+
+        <div class="row">
+            {% for product in products %}
+            <div class="col-md-3">
+                <div class="product-card">
+                    <img src="{{url_for('static', filename='uploads/product/' + product.image)}}" alt="Product 1"
+                        class="product-image">
+                    <p>Available<span>(In Stock)</span></p>
+                    <div class="product-name">{{product.name}}</div>
+                    <div class="product-price">₹{{product.discount}}
+                        <span>₹{{product.price}}</span>{{product.unit}}
+                    </div>
+                    {% if product.MFG_date%}
+                    <p>MFG date: <span>{{product.MFG_date}}</span></p>
+                    <p>Used by: <span>{{product.EXP_date}}</span></p>
+                    {% endif %}
+                    <form action="/add_to_cart" method="POST" enctype="multipart/form-data">
+                        {{form.hidden_tag()}}
+                        <div class="qty-cart">
+                            <div class="quantity buttons_added">
+                                <input type="hidden" name="product_id" value="{{ product.id }}">
+                                <input type="number" step="1" name="quantity" value="1" class="input-text qty text" />
+                            </div>
+                            <button class="cart-icon" type="submit"><i class="fa fa-shopping-cart"></i></button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+
+    </div>
+</section>
+
+
+{% endblock %}

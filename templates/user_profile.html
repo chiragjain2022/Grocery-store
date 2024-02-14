@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+
+{% block title %} Home {% endblock %}
+
+{% block content %}
+
+<div class="user-profile">
+  <h2>User Profile</h2>
+  <div class="user-details">
+    <p><strong>Name:</strong> {{user.firstName}} {{user.lastName}}</p>
+    <p><strong>Email:</strong> {{user.email}}</p>
+  </div>
+
+  <h2>Order History</h2>
+  <div class="order-list">
+    <table>
+      <thead>
+        <tr>
+          <th style="width:130px">Order ID</th>
+          <th style="width:200px">Date</th>
+          <th style="width:300px">Address</th>
+          <th style="width:130px">Status</th>
+          <th style="width:130px">Total</th>
+          <th style="width:100px">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for order in allorders %}
+        <tr>
+          <td>{{order.id}}</td>
+
+          <td>
+            <span class="delivery-time">{{ order.order_date.strftime('%Y-%m-%d') }}</span><br>
+            <span class="delivery-time">{{ order.order_date.strftime('%H:%M:%S') }}</span>
+          </td>
+          <td>{{ order.bill.address }}, {{order.bill.city}}, {{order.bill.zip}}</td>
+          <td>
+            <span class="badge-item badge-status">{{order.status}}</span>
+          </td>
+          <td>₹{{order.total_amount}}</td>
+          <td class="action-btns">
+            <a href="/user/invoice/{{order.id}}" class="edit-btn"><i class="fas fa-edit"></i></a>
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+
+
+{% endblock %}

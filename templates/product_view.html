@@ -1,0 +1,43 @@
+{% extends "admin_base.html" %}
+
+{% block title %} Adminstration {% endblock %}
+
+{% block content %}
+
+<main>
+    <div class="container-fluid">
+        <h2 class="mt-30 page-title">Shops</h2>
+        <div class="row">
+            <div class="col-lg-5 col-md-6">
+                <div class="card card-static-2 mb-30">
+                    <div class="card-body-table">
+                        {% if product %}
+                        <div class="shopowner-content-left text-center pd-20">
+                            <div class="shop_img">
+                                <img src="{{url_for('static', filename='uploads/product/' + product.image)}}" alt="">
+                            </div>
+                            
+                            <div class="shopowner-dts">
+                                <div class="shopowner-dt-list">
+                                    <span class="left-dt">Price</span>
+                                    <span class="right-dt">₹{{product.price}}</span>
+                                </div>
+                                <div class="shopowner-dt-list">
+                                    <span class="left-dt">Status</span>
+                                    <span class="right-dt">{{product.status}}</span>
+                                </div>
+                                <div class="shopowner-dt-list">
+                                    <span class="left-dt">Expiry Date</span>
+                                    <span class="right-dt">{{product.EXP_date}}</span>
+                                </div>
+                            </div>
+                        </div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+{% endblock %}

@@ -1,0 +1,72 @@
+{% extends "base.html" %}
+
+{% block title %} Home {% endblock %}
+
+{% block content %}
+
+<section class="categories">
+    <div class="container">
+        <h2>Categories</h2>
+        <div class="row">
+            {% for category in allcategory %}
+            <div class="col-md-2">
+                <a href="/products/{{category.id}}" class="category-card">
+                    <div class="cate-img">
+                        <img src="{{url_for('static', filename='uploads/category/' + category.image)}}" alt="Category 1"
+                            class="category-image">
+                    </div>
+                    <div class="category-name">{{category.name}}</div>
+                </a>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<section class="products">
+    <div class="container">
+        <h2>Products</h2>
+
+        <div class="row">
+            {% for product in allproduct %}
+            {% if product.category.status == "Active" %}
+            <div class="col-md-3">
+                <div class="product-card">
+                    <img src="{{url_for('static', filename='uploads/product/' + product.image)}}" alt="Product 1"
+                        class="product-image">
+                    {% if product.stock > 0 %}
+                    <p>Available<span>(In Stock)</span></p>
+                    {% else %}
+                    <p>Not Available<span>(Out of Stock)</span></p>
+                    {% endif %}
+                    <div class="product-name">{{product.name}}</div>
+                    <div class="product-price">₹{{product.discount}}
+                        <span>₹{{product.price}}</span>{{product.unit}}
+                    </div>
+                    {% if product.EXP_date%}
+                    <p>MFG date: <span>{{product.MFG_date}}</span></p>
+                    <p>Used by: <span>{{product.EXP_date}}</span></p>
+                    {% endif %}
+                    <form action="/add_to_cart" method="POST" enctype="multipart/form-data">
+                        {{form.hidden_tag()}}
+                        <div class="qty-cart">
+                            <div class="quantity buttons_added">
+                                <input type="hidden" name="product_id" value="{{ product.id }}">
+                                <input type="number" step="1" name="quantity" value="1" class="input-text qty text" />
+                            </div>
+                            {% if product.stock > 0 %}
+                            <button class="cart-icon" type="submit"><i class="fa fa-shopping-cart"></i></button>
+                            {% endif %}
+                        </div>
+                    </form>
+                </div>
+            </div>
+            {% endif %}
+            {% endfor %}
+        </div>
+
+    </div>
+</section>
+
+
+{% endblock %}

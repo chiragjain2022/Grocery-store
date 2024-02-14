@@ -1,0 +1,54 @@
+{% extends "admin_base.html" %}
+
+{% block title %} Adminstration {% endblock %}
+
+{% block content %}
+
+<main>
+    <div class="container-fluid">
+        <h2 class="content">Categories</h2>
+        <div class="row">
+            <div class="col-lg-6 col-md-6">
+                <div class="card card-static-2 mb-30">
+                    <div class="card-title-2">
+                        <h4>Add New Category</h4>
+                    </div>
+                    <div class="card-body-table">
+                        <div class="news-content-right pd-20">
+                            <form method="POST" action="/admin/add/category" enctype="multipart/form-data">
+                                {{form.hidden_tag()}}
+                                <div class="mb-3">
+                                    <label for="name" class="form-label">Name*</label>
+                                    <input type="text" class="form-control" name="name" id="name"
+                                        placeholder="Category Name">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="status" class="form-label">Status*</label>
+                                    <select class="form-control" name="status" id="status">
+                                        <option selected>Active</option>
+                                        <option>Inactive</option>
+                                    </select>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="image" class="form-label">Category Image*</label>
+                                    <div class="input-group">
+                                        <div class="custom-file">
+                                            <input type="file" name="image" id="image"
+                                                aria-describedby="inputGroupFileAddon04">
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <button class="save-btn" type="submit">Add New Category</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+
+
+{% endblock %}

@@ -1,0 +1,149 @@
+body {
+  background-color: #f8f9fa;
+}
+
+h1 {
+  color: #007bff;
+}
+
+.product-card {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease-in-out;
+  margin-bottom: 20px;
+  border-radius: 8px;
+}
+
+.product-image {
+  max-width: 100%;
+  border-radius: 8px 0 0 8px;
+}
+
+.btn-remove {
+  margin-top: 10px;
+  border-radius: 4px;
+}
+
+.card {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease-in-out;
+}
+
+.card:hover {
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.list-group-item {
+  border: none;
+}
+
+.badge {
+  border-radius: 4px;
+  font-size: 1.1em;
+  padding: 0.5em 0.6em 0.4em;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+
+.badge-primary {
+  color: #28a745;
+  background-color: #fff;
+}
+
+.btn-success {
+  background-color: #28a745;
+  border-color: #28a745;
+}
+
+.btn-success:hover {
+  background-color: #218838;
+  border-color: #1e7e34;
+}
+
+.btn-success:focus {
+  box-shadow: 0 0 0 0.2rem rgba(40, 167, 69, 0.5);
+}
+
+.img-fluid {
+  max-width: 100%;
+}
+
+.btn-remove {
+  margin-top: 10px;
+  border-radius: 4px;
+}
+
+.text-center {
+  text-align: center !important;
+  margin-bottom: 34px;
+}
+
+/* Existing styles... */
+
+.product-card {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease-in-out;
+  margin-bottom: 20px;
+  border-radius: 8px;
+}
+
+.product-image {
+  max-width: 100%;
+  border-radius: 8px 0 0 8px;
+}
+
+.btn-remove {
+  margin-top: 10px;
+  border-radius: 4px;
+}
+
+.card {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease-in-out;
+}
+
+.card:hover {
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.list-group-item {
+  border: none;
+}
+
+.btn-success {
+  background-color: #28a745;
+  border-color: #28a745;
+}
+
+.btn-success:hover {
+  background-color: #218838;
+  border-color: #1e7e34;
+}
+
+.btn-success:focus {
+  box-shadow: 0 0 0 0.2rem rgba(40, 167, 69, 0.5);
+}
+
+.img-fluid {
+  max-width: 100%;
+}
+
+.btn-remove {
+  margin-top: 10px;
+  border-radius: 4px;
+}
+
+.card-text span {
+  text-decoration: line-through;
+  color: #6c757d;
+}
+.light span {
+  color: #6c757d;
+}
+
+a {
+  color: #fff;
+}
+
+.empty{
+  margin: 2rem;
+}

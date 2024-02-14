@@ -1,0 +1,94 @@
+{% extends "admin_base.html" %}
+
+{% block title %} Adminstration {% endblock %}
+
+{% block content %}
+
+
+<div class="container-fluid">
+    <h2 class="mt-30 page-title">Products</h2>
+    <div class="row">
+        <div class="col-lg-6 col-md-6">
+            <div class="card card-static-2 mb-30">
+                <div class="card-title-2">
+                    <h4>Edit Product</h4>
+                </div>
+                <div class="card-body-table">
+                    <div class="news-content-right pd-20">
+                        <form action="/admin/edit/product/{{product.id}}" method="POST" enctype="multipart/form-data">
+                            {{form.hidden_tag()}}
+                            <div class="form-group">
+                                <label class="form-label">Name*</label>
+                                <input id="name" class="form-control" name="name" placeholder="Category Name" value="{{product.name}}">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Category*</label>
+                                <select id="categtory" name="category" class="form-control">
+                                    <option selected>--Select Category--</option>
+                                    {% for category in allcategory %}
+                                    <option value= "{{ category.id }}">{{ category.name }}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Unit*</label>
+                                <select id="unit" name="unit" class="form-control">
+                                    <option selected>--Select Unit--</option>
+                                    <option >/kg</option>
+                                    <option >/gram</option>
+                                    <option >/unit</option>
+                                    <option >/dozen</option>
+                                    <option >/liter</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">MRP*</label>
+                                <input id="price" type="number" class="form-control" name="price" placeholder="₹0" value="{{product.price}}">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Discount MRP*</label>
+                                <input id="discount" type="number" class="form-control" name="discount" placeholder="₹0" value="{{product.discount}}">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Manufracture Date</label>
+                                <input id="MFG_date" type="date" class="form-control" name="MFG_date" placeholder="Date"value="{{product.MFG_date}}">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Expiry Date</label>
+                                <input id="EXP_date" type="date" class="form-control" name="EXP_date" placeholder="Date" value="{{product.EXP_date}}">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Stock</label>
+                                <input id="stock" type="number" class="form-control" name="stock" placeholder="100" value="{{product.stock}}">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Status*</label>
+                                <select id="status" name="status" class="form-control">
+                                    <option selected>Active</option>
+                                    <option >Inactive</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Product Image*</label>
+                                <div class="input-group">
+                                    <div class="custom-file">
+                                        <input type="file"  id="inputGroupFile04"
+                                            aria-describedby="inputGroupFileAddon04" name="image" value="{{product.image}}">
+                                    </div>
+                                </div>
+                                {% if product.image %}
+                                <div class="add-cate-img-1">
+                                    <img src="{{url_for('static', filename='uploads/product/' + product.image)}}" alt="">
+                                </div>
+                                {% endif %}
+                            </div>
+                            <button class="save-btn hover-btn" type="submit">Update Product</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
